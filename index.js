@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aktivitas Harian</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      color: #7b1fa2;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #d1c4e9;
+      border-radius: 10px;
+      font-size: 1em;
+      margin-bottom: 12px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #7b1fa2;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #7b1fa2;
+      color: white;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #6a1b9a;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 24px;
+    }
+
+    li {
+      background: #f3e5f5;
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .task-text {
+      flex: 1;
+      color: #333;
+      font-size: 1em;
+    }
+
+    .remove {
+      background: #e53935;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85em;
+      margin-left: 10px;
+      transition: background 0.3s;
+    }
+
+    .remove:hover {
+      background: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Aktivitas Harian</h1>
+    <input type="text" id="taskInput" placeholder="Tulis aktivitas hari ini...">
+    <button onclick="addTask()">Tambah Aktivitas</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      const taskText = input.value.trim();
+
+      if (taskText === '') {
+        alert('Tolong isi aktivitas terlebih dahulu.');
+        return;
+      }
+
+      const li = document.createElement('li');
+
+      const span = document.createElement('span');
+      span.textContent = taskText;
+      span.className = 'task-text';
+
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Hapus';
+      removeBtn.className = 'remove';
+      removeBtn.onclick = function() {
+        li.remove();
+      };
+
+      li.appendChild(span);
+      li.appendChild(removeBtn);
+      document.getElementById('taskList').appendChild(li);
+
+      input.value = '';
+      input.focus();
+    }
+  </script>
+</body>
+</html>
