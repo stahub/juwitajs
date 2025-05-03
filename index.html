@@ -67,17 +67,33 @@
     button {
       width: 100%;
       padding: 14px;
-      background: #7b1fa2;
+      background: linear-gradient(to right, #7b1fa2, #9c27b0);
       color: white;
       font-size: 1em;
+      font-weight: 500;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
+      transition: all 0.3s ease;
+    }
+	button-x {
+      width: 40px;
+      padding: 14px;
+      background: linear-gradient(to right, #7b1fa2, #9c27b0);
+      color: white;
+      font-size: 1em;
+      font-weight: 500;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(123, 31, 162, 0.3);
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      background: #6a1b9a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(123, 31, 162, 0.35);
     }
 
     ul {
@@ -103,20 +119,23 @@
       font-size: 1em;
     }
 
-.remove {
-  background: transparent;
-  border: none;
-  color: #888;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: color 0.3s, transform 0.2s;
-}
+    .remove {
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-left: 10px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
 
-.remove:hover {
-  color: #d32f2f;
-  transform: scale(1.2);
-}
+    .remove:hover {
+      background-color: #f8bbd0;
+      color: #d32f2f;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -143,8 +162,8 @@
       span.textContent = taskText;
       span.className = 'task-text';
 
-      const removeBtn = document.createElement('button');
-      removeBtn.textContent = 'Hapus';
+      const removeBtn = document.createElement('button--x');
+      removeBtn.textContent = 'X';
       removeBtn.className = 'remove';
       removeBtn.onclick = function() {
         li.remove();
